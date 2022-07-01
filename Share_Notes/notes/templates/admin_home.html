@@ -1,0 +1,66 @@
+{% extends 'admin_nav.html' %}
+
+{% load static %}
+
+{% block body %}
+<style>
+
+h2,h4{
+  padding : 10px
+  }
+.container1{
+   background-color : lightgrey;
+   border-radius : 8px;
+}
+.mydiv:hover {
+	transform: translateY(-10px)
+}
+</style>
+
+<div class="container mt-5">
+    <div class="row">
+
+        <div class="col-sm-3 text-center mydiv">
+            <div class="container1">
+                <h2 class = "text-primary">{{pn}}</h2>
+                <a href="{% url 'pending_notes' %}"><h4 class="test-dark">Pending Notes</h4></a>
+            </div>
+        </div>
+
+         <div class="col-sm-3 text-center mydiv">
+            <div class="container1">
+                <h2 class = "text-primary">{{an}}</h2>
+                <a href="{% url 'accepted_notes' %}"><h4 class="test-dark">Accepted Notes</h4></a>
+            </div>
+        </div>
+
+         <div class="col-sm-3 text-center mydiv">
+            <div class="container1">
+                <h2 class = "text-primary">{{rn}}</h2>
+                <a href="{% url 'rejected_notes' %}"><h4 class="test-dark">Rejected Notes</h4></a>
+            </div>
+        </div>
+
+         <div class="col-sm-3 text-center mydiv">
+            <div class="container1">
+                <h2 class = "text-primary">{{alln}}</h2>
+                <a href="{% url 'all_notes' %}"><h4 class="test-dark">All Notes</h4></a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<footer class="container mt-5 text-center">
+		          <p style="font-size: 30pt; color: red; font-weight: bold">
+			          Copyright &copy;
+			         <script>
+				document.write(new Date().getFullYear());
+			</script>
+			All Right Reserved <br><span
+				style="color: #006400">This website is made by </span>
+				<a  href="#" target="_blank">Anukool Jaiswal</a></p>
+	       </footer>
+
+
+{% endblock %}

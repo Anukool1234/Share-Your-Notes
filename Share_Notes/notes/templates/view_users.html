@@ -1,0 +1,39 @@
+{% extends 'admin_nav.html'%}
+{% load static %}
+{% block body %}
+<br><br><br>
+<div class="container card shadow mt-5">
+	<div class="card-body">
+  <h1 class="text-success text-center"></h1>
+            <h4 class="text-center text-danger">View Users</h4>
+			<br>
+
+			<table id="example" class="table table-striped table-bordered" style="width:100%">
+				<thead style="background-color : #607d8b;">
+					<tr>
+                        <th class="text-center">S.No</th>
+                        <th class="d-none d-sm-table-cell">Full Name</th>
+                        <th class="d-none d-sm-table-cell">Email ID</th>
+                        <th class="d-none d-sm-table-cell">Contact</th>
+                        <th class="d-none d-sm-table-cell">Branch</th>
+                        <th class="d-none d-sm-table-cell">Role</th>
+                        <th class="d-none d-sm-table-cell" style="width: 15%;">Action</th>
+					</tr>
+				</thead>
+				{% for i in users %}
+				<tbody>
+				 <tr>
+                     <td class="text-center">{{forloop.counter}}</td>
+                     <td class="font-w600">{{i.user.first_name}} {{i.user.last_name}}</td>
+                     <td class="font-w600">{{i.user.username}}</td>
+                     <td class="font-w600">{{i.contact}}</td>
+                     <td class="font-w600">{{i.branch}}</td>
+                     <td class="font-w600">{{i.role}}</td>
+                     <td class="font-w600"><a href="{% url 'delete_users' i.user.id %}" class="btn btn-danger" onclick="return confirm('Are your sure to Delete ?')">Delete</a></td>
+                 </tr>
+				{% endfor %}
+				</tbody>
+	</table>
+</div>
+</div>
+{% endblock %}

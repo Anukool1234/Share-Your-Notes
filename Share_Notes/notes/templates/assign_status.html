@@ -1,0 +1,42 @@
+{% extends 'admin_nav.html'%}
+{% load static %}
+{% block body %}
+
+{% ifequal error "no" %}
+     <script>
+	   alert('Status Updated Successfull');
+	   window.location=('{% url 'all_notes' %}');
+     </script>
+{% endifequal %}
+
+{% ifequal error "yes" %}
+     <script>
+	    alert('Something went wrong, Try Again');
+     </script>
+{% endifequal %}
+
+
+<br><br><br>
+<div class="container card shadow mt-5">
+	<div class="card-body">
+    <h1 class="text-success text-center"></h1>
+        <h2 class="text-center">Assign Status</h2>
+    <hr>
+    <form method="post">
+        {% csrf_token %}
+        <label>Notes ID</label>
+        <input type="text" name="noteid" class="form-control" value="{{notes.id}}" readonly>
+
+        <label>Status</label>
+        <select name="status" class="form-control">
+            <option value="Accept">Accept</option>
+            <option value="Reject">Reject</option>
+        </select>
+        <br>
+        <input type="submit" value="Submit" class="btn btn-primary">
+    </form>
+
+
+</div>
+</div>
+{% endblock %}
